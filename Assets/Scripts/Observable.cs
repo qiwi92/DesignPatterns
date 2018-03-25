@@ -43,7 +43,8 @@ namespace Assets.Scripts
             foreach (var observer in _observers)
             {
                 observer.Value = _value;
+                observer.NotifyChange();
             }
         }     
-    }   
+    }    
 }

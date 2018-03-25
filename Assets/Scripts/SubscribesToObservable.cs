@@ -8,8 +8,6 @@ namespace Assets.Scripts
 
         private Observer<int> _someNumber;
 
-    
-
         private void Start()
         {
             _someNumber = new Observer<int>();
@@ -18,16 +16,21 @@ namespace Assets.Scripts
 
             _hasObservable.SomeObservable.AddObserver(_someNumber);
 
+            _someNumber.Subscribe(() =>
+            {
+                Debug.Log("Value: " + _someNumber.Value);
+            });
+
+            
 
             _hasObservable.SomeObservable.Value = 2;
-            Debug.Log("Value: " +  _someNumber.Value);
 
             _hasObservable.SomeObservable.Value = 4;
-            Debug.Log("Value: " + _someNumber.Value);
 
             _hasObservable.SomeObservable.RemoveObserver(_someNumber);
+
             _hasObservable.SomeObservable.Value = 0;
-            Debug.Log("Value: " + _someNumber.Value);
+
         }
     }
 }
