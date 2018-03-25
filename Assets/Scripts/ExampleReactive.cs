@@ -11,7 +11,7 @@ namespace Assets.Scripts
 
         private void Start()
         {
-            _number.Subscribe(() => _otherNumber = _number.Value );
+            //_number.Subscribe(() => _otherNumber = _number.Value );
 
 
             _number.Value = 3;

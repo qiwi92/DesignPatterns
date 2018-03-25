@@ -57,11 +57,6 @@ namespace Assets.Scripts
         {
             reactiveProperty.Observers.Clear();
         }
-
-        public static void Dispose<T>(this ReactiveProperty<T> reactiveProperty, int id)
-        {
-            reactiveProperty.Observers.Where(x => x.Id == id).
-        }
     }
 
     public class Disposer
