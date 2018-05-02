@@ -36,21 +36,19 @@ namespace Assets.Scripts
     public class Observer
     {
         public Action Action;
-        public int Id;
 
-        public Observer(Action action, int id)
+        public Observer(Action action)
         {
             Action = action;
-            Id = id;
         }
     }
 
 
     public static class ReactiveExtension
     {
-        public static void Subscribe<T>(this ReactiveProperty<T> reactiveProperty, Action action, int id)
+        public static void Subscribe<T>(this ReactiveProperty<T> reactiveProperty, Action action)
         {
-            reactiveProperty.Observers.Add(new Observer(action, id));
+            reactiveProperty.Observers.Add(new Observer(action));
         }
 
         public static void UnubscribeAll<T>(this ReactiveProperty<T> reactiveProperty)

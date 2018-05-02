@@ -41,3 +41,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Grid
+    uniqueID: 2494383235
+    locked: 0
+  - name: Player
+    uniqueID: 2300193549
+    locked: 0
+  - name: Indicators
+    uniqueID: 3832531173
+    locked: 0
