@@ -1,4 +1,6 @@
-﻿namespace StateMaschine
+﻿using UnityEngine;
+
+namespace StateMaschine
 {
     public class PlayerStateMaschine : IPlayerState
     {
@@ -6,10 +8,13 @@
         private readonly DeadState _deadState;
         private readonly AliveState _aliveState;
 
-        public PlayerStateMaschine()
+        private Player _player;
+
+        public PlayerStateMaschine(Player player)
         {
-            _deadState = new DeadState(this);
-            _aliveState = new AliveState(this);
+            _player = player;
+            _deadState = new DeadState(this, player);
+            _aliveState = new AliveState(this, player);
             
             _playerState = _aliveState;
 
@@ -17,16 +22,18 @@
 
         public void Spawn()
         {
+            Debug.Log("Player has Respawned");
             _playerState.Spawn();
         }
 
-        public void TakeDamage()
+        public void TakeDamage(int dmg)
         {
-            _playerState.TakeDamage();
+            _playerState.TakeDamage(dmg);
         }
 
         public void Die()
         {
+            Debug.Log("Player is dead");
             _playerState.Die();
         }
 

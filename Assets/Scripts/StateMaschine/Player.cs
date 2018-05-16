@@ -1,4 +1,6 @@
-﻿namespace StateMaschine
+﻿using System;
+
+namespace StateMaschine
 {
     public class Player
     {
@@ -9,25 +11,24 @@
         {
             RefillHp();
 
-            _playerStateMaschine = new PlayerStateMaschine();
+            _playerStateMaschine = new PlayerStateMaschine(this);
         }
 
-        public void TakeDamage(int dmg)
+        public bool TakeDamage(int dmg)
         {
             if (dmg < 0)
             {
-                return;
+                throw new ArgumentException();
             }
 
             if (HitPoints - dmg <= 0)
             {
                 HitPoints = 0;
-                _playerStateMaschine.Die();
-                return;
+                return false;
             }
 
-            _playerStateMaschine.TakeDamage();
             HitPoints -= dmg;
+            return true;
         }
 
         public void RefillHp()

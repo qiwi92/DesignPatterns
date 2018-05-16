@@ -3,7 +3,7 @@
     public interface IPlayerState
     {
         void Spawn();
-        void TakeDamage();
+        void TakeDamage(int dmg);
         void Die();
     }
 }
